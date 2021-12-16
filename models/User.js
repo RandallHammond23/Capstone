@@ -12,13 +12,13 @@ const userSchema = new mongoose.Schema({
     followersList: [{ type: mongoose.Types.ObjectId, default: [] }],
     followRequests: [{type: mongoose.Types.ObjectId, default:[]}],
     posts: { type: Array, default: [] },
-    dateJoined: { type: Date, default: Date.now }
+   
   })
 
 
 
-  // userSchema.methods.generateAuthToken = function() {
-  //   return jwt.sign({ _id: this._id, firstName: this.firstName, lastName: this.lastName,  isAdmin: this.isAdmin }, process.env.JWT)}
+  userSchema.methods.generateAuthToken = function() {
+    return jwt.sign({ _id: this._id, firstName: this.firstName, lastName: this.lastName,  isAdmin: this.isAdmin }, process.env.JWT)}
 
 
 
