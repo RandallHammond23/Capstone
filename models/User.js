@@ -12,13 +12,14 @@ const userSchema = new mongoose.Schema({
     followersList: [{ type: mongoose.Types.ObjectId, default: [] }],
     followRequests: [{type: mongoose.Types.ObjectId, default:[]}],
     posts: { type: Array, default: [] },
-   
+    image: {type:String, default:""}
+  
   })
 
 
 
   userSchema.methods.generateAuthToken = function() {
-    return jwt.sign({ _id: this._id, firstName: this.firstName, lastName: this.lastName,  isAdmin: this.isAdmin }, process.env.JWT)}
+    return jwt.sign({ _id: this._id, firstName: this.firstName, lastName: this.lastName,  isAdmin: this.isAdmin, image: this.image }, process.env.JWT)}
 
 
 
@@ -30,7 +31,8 @@ const userSchema = new mongoose.Schema({
         firstName: Joi.string().max(50).required(),
         lastName: Joi.string().max(50).required(),
         email: Joi.string().min(5).max(255).required().email(),
-        password: Joi.string().min(5).max(1024).required()
+        password: Joi.string().min(5).max(1024).required(),
+        image: Joi.string(),
       })
       return schema.validate(user)
     }
