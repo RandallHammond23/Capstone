@@ -14,30 +14,7 @@ router.get('/', async (req, res) => {
 
   //add posts
 
-  // router.post('/:userId/posts',  async (req, res) => {
-  //   try {
-  //     const { error } = validatePost(req.body)
-  //     if (error) return res.status(400).send(error)
-  
-  //     const user = await User.findById(req.params.userId)
-  //     if (!user) return res.status(400).send(
-  //       `The user with id: "${req.params.userId}" does not exist.`
-  //     )
-      
-  //     const post = new Post({
-  //       userID: req.body.userID,
-  //       text: req.body.text,
-  //       likes: req.body.likes,
-  //       disLikes: req.body.disLikes
-  //     })
-  //     User.posts.push(post)
-  //     await User.save()
-  
-  //     return res.send(post)
-  //   } catch (ex) {
-  //     return res.status(500).send(`Internal Server Error: ${ex}`)
-  //   }
-  // })
+
   
 
 

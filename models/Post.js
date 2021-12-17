@@ -2,7 +2,7 @@ const { date } = require("joi");
 const Joi = require("joi");
 const mongoose = require("mongoose");
 
-// const { replySchema } = require('./reply');
+const { replySchema } = require('./reply');
 
 
 const postSchema = new mongoose.Schema({
@@ -10,7 +10,8 @@ const postSchema = new mongoose.Schema({
   text: { type: String, required: true },
   likes: { type: Number, default: 0 },
   dislikes: { type: Number, default: 0 },
-//   replies: [{ type: replySchema }], 
+  comments: {type:String, default:0},
+  replies: [{ type: replySchema }], 
   image: {type:String, default:""},
  
 
