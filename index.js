@@ -7,19 +7,22 @@ const auth = require('./Routes/auth')
 const fs = require('fs')
 const path = require('path')
 const post = require('./Routes/Posts')
-const followers = require('./Routes/followers')
+const followers = require('./Routes/Followers')
+// const comments = require('./Routes/Comments')
 
 connectDB();
 
 app.use(cors());
 app.use(express.json());
 
-
+app.use('/api/auth', auth)
 app.use('/api/users', users)
-app.use('/api/addUser', users)
-app.use('/api/remove', users)
+app.use('/api/showPosts', post)
+// app.use('/api/addUser', users)
+// app.use('/api/remove', users)
 app.use('/api/addPost', post)
 app.use('/api/Follow', followers)
+// app.use('/api/comment', comments)
 app.use('/uploads/images', express.static(path.join('uploads', 'images')));
 app.use((error,req,res,next) =>{
 if (req.file){
