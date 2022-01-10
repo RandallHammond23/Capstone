@@ -18,8 +18,6 @@ app.use(express.json());
 app.use('/api/auth', auth)
 app.use('/api/users', users)
 app.use('/api/showPosts', post)
-// app.use('/api/addUser', users)
-// app.use('/api/remove', users)
 app.use('/api/addPost', post)
 app.use('/api/Follow', followers)
 // app.use('/api/comment', comments)

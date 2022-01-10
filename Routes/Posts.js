@@ -16,14 +16,14 @@ router.get("/", async (req, res) => {
 });
 
 // show post from single user
-router.get("/:id", async (req, res) => {
+router.get("/:userId", async (req, res) => {
   try {
-    const posts = await Post.findById(req.params.id);
+    const posts = await Post.findById(req.params.userId);
 
     if (!posts)
       return res
         .status(400)
-        .send(`The posts with id "${req.params.id}" does not exist.`);
+        .send(`The posts with id "${req.params.userId}" does not exist.`);
     return res.send(posts);
   } catch (err) {
     return res.status(500).send(`Internal Server Error: ${err}`);

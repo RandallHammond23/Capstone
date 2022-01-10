@@ -24,15 +24,14 @@ router.post("/register", fileUpload.single("image"), async (req, res) => {
       image: req.file.path,
     });
     await user.save();
-    const token = jwt.sign(
-      { _id: user._id, name: user.name },
-      config.get("jwtSecret")
-    );
+    const token = user.generateAuthToken()
+    // const token = jwt.sign({ _id: user._id, name: user.name }, process.env.JWT);
+      return res
+      .header('x-auth-token', token)
+      .header('access-control-expose-headers', 'x-auth-token')
+      .send({ _id: user._id,  email: user.email });
 
-    return res
-      .header("x-auth-token", token)
-      .header("access-control-expose-headers", "x-auth-token")
-      .send(user);
+
   } catch (ex) {
     return res.status(500).send(`Internal Server Error: ${ex}`);
   }
